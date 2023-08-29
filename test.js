@@ -18,7 +18,17 @@ tape('should respond hello', (t) => {
 tape('should respond with user-agent', (t) => {
   jsonist.get(`${urlBase}/user-agent`, (err, body) => {
     if (err) t.error(err)
-    t.ok(body.userAgent)
+
+    t.equal(body.msg, 'user-agent')
+    t.end()
+  })
+})
+
+tape('should respond with base64', (t) => {
+  jsonist.get(`${urlBase}/base64`, (err, body) => {
+    if (err) t.error(err)
+      
+    t.equal(body.msg, 'base64')
     t.end()
   })
 })
