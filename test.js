@@ -15,6 +15,14 @@ tape('should respond hello', (t) => {
   })
 })
 
+tape('should respond with user-agent', (t) => {
+  jsonist.get(`${urlBase}/user-agent`, (err, body) => {
+    if (err) t.error(err)
+    t.ok(body.userAgent)
+    t.end()
+  })
+})
+
 tape('cleanup', function (t) {
   server.close()
   t.end()
